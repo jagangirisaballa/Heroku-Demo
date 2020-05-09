@@ -14,7 +14,7 @@ def home():
 
 @app.route('/predict',methods=['POST'])
 def predict():
-	df= pd.read_csv("https://github.com/jagangirisaballa/Heroku-Demo/blob/master/data/YoutubeSpamMergeddata1.numbers")
+	df= pd.read_csv("https://github.com/jagangirisaballa/Heroku-Demo/blob/master/data/YoutubeSpamMergeddata2.csv")
 	df_data = df[["CONTENT","CLASS"]]
 	# Features and Labels
 	df_x = df_data['CONTENT']
