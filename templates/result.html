@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+ 
+</head>
+<body>
+
+	<header>
+		<div class="container">
+		<div id="brandname">
+		</div>
+		
+	</header>
+	<div class="results">
+	
+	{% if prediction == 1%}
+	<h2 >Spam</h2>
+	{% elif prediction == 0%}
+	<h2>Not a Spam (It is a Ham)</h2>
+	{% endif %}
+
+	</div>
+
+</body>
+</html>
