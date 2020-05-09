@@ -14,7 +14,17 @@ def home():
 
 @app.route('/predict',methods=['POST'])
 def predict():
-	df= pd.read_csv("https://github.com/jagangirisaballa/Heroku-Demo/blob/master/data/YoutubeMerged2.csv", header=0, escapechar='\\')
+	### Loop the data lines
+	with open("https://github.com/jagangirisaballa/Heroku-Demo/blob/master/data/YoutubeMerged2.csv", 'r') as temp_f:
+   	 # get No of columns in each line
+    	col_count = [ len(l.split(",")) for l in temp_f.readlines() ]
+
+	### Generate column names  (names will be 0, 1, 2, ..., maximum columns - 1)
+	column_names = [i for i in range(0, max(col_count))]
+
+	### Read csv
+	df = pd.read_csv("https://github.com/jagangirisaballa/Heroku-Demo/blob/master/data/YoutubeMerged2.csv", header=None, delimiter=",", names=column_names)
+	###df= pd.read_csv("https://github.com/jagangirisaballa/Heroku-Demo/blob/master/data/YoutubeMerged2.csv", header=0, escapechar='\\')
 	df_data = df[["CONTENT","CLASS"]]
 	# Features and Labels
 	df_x = df_data['CONTENT']
