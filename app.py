@@ -4,8 +4,7 @@ import pickle
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.externals import joblib
-from io import StringIO
-import requests
+
 
 
 
@@ -18,9 +17,7 @@ def home():
 
 @app.route('/predict',methods=['POST'])
 def predict():
-	url='https://github.com/jagangirisaballa/Heroku-Demo/blob/master/data/YoutubeMerged2.csv'
-	s=requests.get(url).text
-	df= pd.read_csv(StringIO(s))
+	df= pd.read_table(r"https://github.com/jagangirisaballa/Heroku-Demo/blob/master/data/YoutubeSpamMergeddata.csv")
 	df_data = df[["CONTENT","CLASS"]]
 	# Features and Labels
 	df_x = df_data['CONTENT']
