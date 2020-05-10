@@ -20,7 +20,7 @@ def predict():
 	#url = 'https://drive.google.com/open?id=1Yr3Vjuzw9_s-wDsGJ5O0lehFlYfTuQKe_Sgd0WX4IxE'
 	#df = pd.read_csv(StringIO(url), error_bad_lines=False)
 	#df = pd.read_html(url,index_col=0)
-	df= pd.read_csv("https://raw.githubusercontent.com/jagangirisaballa/Heroku-Demo/master/data/YoutubeSpamMergeddata.csv")
+	df= pd.read_csv("https://raw.githubusercontent.com/jagangirisaballa/Heroku-Demo/master/data/YoutubeSpamMergeddata.csv", encoding='latin-1')
 	df_data = df[["CONTENT","CLASS"]]
 	# Features and Labels
 	df_x = df_data['CONTENT']
