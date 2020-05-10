@@ -19,7 +19,7 @@ def home():
 def predict():
 	#url = 'https://github.com/jagangirisaballa/Heroku-Demo/blob/master/data/YoutubeMerged2.csv'
 	#df = pd.read_csv(url,index_col=0)
-	df= pd.read_excel("https://github.com/jagangirisaballa/Heroku-Demo/blob/master/data/YoutubeMerged6.xls")
+	df= pd.read_excel("https://github.com/jagangirisaballa/Heroku-Demo/blob/master/data/YoutubeMerged6.xlsx")
 	df_data = df[["CONTENT","CLASS"]]
 	# Features and Labels
 	df_x = df_data['CONTENT']
