@@ -47,33 +47,19 @@ def predict():
 	from sklearn.naive_bayes import MultinomialNB
 	spam_detect_model = MultinomialNB().fit(content_tfidf, df_data['CLASS'])
 
+	 # Save the model
+	 mod_file = 'classification.model'
+	 pickle.dump(spam_detect_model, open(mod_file, 'wb'))
 
-	#check model for the predicted and expected value say for message#2 and message#5
-	content = df_data['CONTENT']
-	cv = CountVectorizer()
-	clf = MultinomialNB()
-	bag_of_words_for_content = bag_of_words_transformer.transform([content])
-	tfidf = tfidf_transformer.transform(bag_of_words_for_content)
 
-	# # Features and Labels
-	# df_x = df_data['CONTENT']
-	# df_y = df_data.CLASS
-    # # Extract Feature With CountVectorizer
-	# corpus = df_x
-	# cv = CountVectorizer()
-	# X = cv.fit_transform(corpus) # Fit the Data
-	# from sklearn.model_selection import train_test_split
-	# X_train, X_test, y_train, y_test = train_test_split(X, df_y, test_size=0.2, random_state=42)
-	# #Naive Bayes Classifier
-	# from sklearn.naive_bayes import MultinomialNB
-	# clf = MultinomialNB()
-	# clf.fit(X_train,y_train)
 	
 	if request.method == 'POST':
 		comment = request.form['comment']
 		data = [comment]
 		vect = cv.transform(data).toarray()
-		my_prediction = spam_detect_model.predict(vect)
+		 # load the model
+	  	loaded_model = pickle.load(open('classification.model', 'rb'))
+		my_prediction = loaded_model.predict(vect)
 	return render_template('result.html',prediction = my_prediction)
 
 
