@@ -17,9 +17,9 @@ def home():
 
 @app.route('/predict',methods=['POST'])
 def predict():
-	#url = 'https://github.com/jagangirisaballa/Heroku-Demo/blob/master/data/YoutubeMerged2.csv'
-	#df = pd.read_csv(url,index_col=0)
-	df= pd.read_csv("https://github.com/jagangirisaballa/Heroku-Demo/blob/master/data/YoutubeMerged4%20-%20YoutubeMerged2.csv")
+	url = 'https://drive.google.com/open?id=1Yr3Vjuzw9_s-wDsGJ5O0lehFlYfTuQKe_Sgd0WX4IxE'
+	df = pd.read_csv(url,index_col=0)
+	#df= pd.read_csv("https://github.com/jagangirisaballa/Heroku-Demo/blob/master/data/YoutubeMerged4%20-%20YoutubeMerged2.csv")
 	df_data = df[["CONTENT","CLASS"]]
 	# Features and Labels
 	df_x = df_data['CONTENT']
